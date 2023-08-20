@@ -6,7 +6,7 @@
  * @i: Pointer to the index where flag checking starts.
  * Return: Bitwise representation of the set flags.
  */
-int get_flags(const char *format, int *i)
+int flags_checker(const char *format, int *i)
 {
     /* Mapping of flags to their corresponding bitwise values. */
     const char FLAGS_CH[] = {'-', '+', '0', '#', ' ', '\0'};
