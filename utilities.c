@@ -25,8 +25,10 @@ int append_hexa_code(char ascii_code, char buffer[], int i)
 
 	buffer[i++] = '\\';
 	buffer[i++] = 'x';
-	buffer[i++] = map_to[(ascii_code >> 4) & 0xF];  // Extract higher 4 bits
-	buffer[i] = map_to[ascii_code & 0xF];           // Extract lower 4 bits
+	/* Extract higher 4 bits */
+	buffer[i++] = map_to[(ascii_code >> 4) & 0xF];
+	/* Extract lower 4 bits */
+	buffer[i] = map_to[ascii_code & 0xF];
 
 	return (4);
 }
