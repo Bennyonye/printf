@@ -9,7 +9,7 @@
  */
 int format_size(const char *format, int *i)
 {
-    // The character after the current one
+    /* The character after the current one */
     int next_char = *i + 1;
     int size = 0;
 
@@ -22,7 +22,7 @@ int format_size(const char *format, int *i)
         size = S_SHORT;
     }
 
-    // Update the index pointer only if a size modifier is found
+    /* Update the index pointer only if a size modifier is found */
     if (size != 0)
     {
         *i = next_char;
