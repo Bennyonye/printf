@@ -9,7 +9,8 @@
  */
 int format_size(const char *format, int *i)
 {
-    int next_char = *i + 1;  // The character after the current one
+    // The character after the current one
+    int next_char = *i + 1;
     int size = 0;
 
     if (format[next_char] == 'l')
