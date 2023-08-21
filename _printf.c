@@ -1,6 +1,7 @@
 #include "main.h"
 
-#define BUFF_SIZE 1024  // Assuming BUFF_SIZE is meant to be defined somewhere; if not, you'd need to define it.
+/* Assuming BUFF_SIZE is meant to be defined somewhere; if not, you'd need to define it */
+#define BUFF_SIZE 1024
 
 /* Function Prototypes */
 void print_buffer(char buffer[], int *buff_ind);
@@ -41,7 +42,8 @@ int _printf(const char *format, ...)
             precision = get_precision(format, &i, list);
             size = get_size(format, &i);
 
-            i++;  // Move past the current character.
+            /* Move past the current character. */
+            i++;
 
             int printed = handle_print(format, &i, list, buffer, flags, width, precision, size);
             if (printed == -1)
