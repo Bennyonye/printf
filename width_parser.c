@@ -15,23 +15,27 @@ int width_parser(const char *format, int *i, va_list list)
 
 	for (curr_i = *i + 1; format[curr_i] != '\0'; curr_i++)
 	{
-		if (is_digit(format[curr_i])) // Check if character is a digit
+		/* Check if character is a digit */
+		if (is_digit(format[curr_i]))
 		{
-			width = (width * 10) + (format[curr_i] - '0'); // Update the width
+			/* Update the width */
+			width = (width * 10) + (format[curr_i] - '0');
 		}
-		else if (format[curr_i] == '*') // Check if width is specified in the argument list
+		/* Check if width is specified in the argument list */
+		else if (format[curr_i] == '*')
 		{
 			width = va_arg(list, int);
 			break;
 		}
 		else
 		{
-			break; // Exit loop if neither a digit nor '*'
+			/* Exit loop if neither a digit nor '*' */
+			break;
 		}
 	}
 
-	*i = curr_i - 1; // Update the index
+	/* Update the index */
+	*i = curr_i - 1;
 
 	return width;
 }
-
