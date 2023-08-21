@@ -1,5 +1,51 @@
 #include "main.h"
 
+/********** RENDER HEXADECIMAL IN VARIOUS FORMATS **********/
+/**
+ * render_hex - Renders hex values in various styles
+ * @types: Argument list
+ * @map_to: Mapping array
+ * @buffer: Array buffer for display
+ * @flags:  Current flag status
+ * @flag_ch: Active flag character
+ * @width: Column width
+ * @precision: Decimal precision
+ * @size: Value size
+ * Return: Count of chars displayed.
+ */
+int render_hex(va_list types, char map_to[], char buffer[],
+	int flags, char flag_ch, int width, int precision, int size)
+{
+	int i = BUFF_SIZE - 2;
+	unsigned long int num = va_arg(types, unsigned long int);
+	unsigned long int init_num = num;
+
+	UNUSED(width);
+
+	num = convert_size_unsgnd(num, size);
+
+	if (num == 0)
+		buffer[i--] = '0';
+
+	buffer[BUFF_SIZE - 1] = '\0';
+
+	while (num > 0)
+	{
+		buffer[i--] = map_to[num % 16];
+		num /= 16;
+	}
+
+	if (flags & F_HASH && init_num != 0)
+	{
+		buffer[i--] = flag_ch;
+		buffer[i--] = '0';
+	}
+
+	i++;
+
+    return (write_unsgnd(0, i, buffer, flags, width, precision, size));
+}
+
 /*************** DISPLAY UNSIGNED NUMBER ******************/
 /**
  * display_unsigned - Showcases an unsigned integer
@@ -49,7 +95,6 @@ int display_unsigned(va_list types, char buffer[],
 int display_octal(va_list types, char buffer[],
 	int flags, int width, int precision, int size)
 {
-
 	int i = BUFF_SIZE - 2;
 	unsigned long int num = va_arg(types, unsigned long int);
 	unsigned long int init_num = num;
@@ -112,50 +157,3 @@ int display_hex_upper(va_list types, char buffer[],
 	return (render_hex(types, "0123456789ABCDEF", buffer,
 		flags, 'X', width, precision, size));
 }
-
-/********** RENDER HEXADECIMAL IN VARIOUS FORMATS **********/
-/**
- * render_hex - Renders hex values in various styles
- * @types: Argument list
- * @map_to: Mapping array
- * @buffer: Array buffer for display
- * @flags:  Current flag status
- * @flag_ch: Active flag character
- * @width: Column width
- * @precision: Decimal precision
- * @size: Value size
- * Return: Count of chars displayed.
- */
-int render_hex(va_list types, char map_to[], char buffer[],
-	int flags, char flag_ch, int width, int precision, int size)
-{
-	int i = BUFF_SIZE - 2;
-	unsigned long int num = va_arg(types, unsigned long int);
-	unsigned long int init_num = num;
-
-	UNUSED(width);
-
-	num = convert_size_unsgnd(num, size);
-
-	if (num == 0)
-		buffer[i--] = '0';
-
-	buffer[BUFF_SIZE - 1] = '\0';
-
-	while (num > 0)
-	{
-		buffer[i--] = map_to[num % 16];
-		num /= 16;
-	}
-
-	if (flags & F_HASH && init_num != 0)
-	{
-		buffer[i--] = flag_ch;
-		buffer[i--] = '0';
-	}
-
-	i++;
-
-        return (write_unsgnd(0, i, buffer, flags, width, precision, size));
-}
-
