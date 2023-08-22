@@ -57,7 +57,7 @@ int render_hex(va_list types, char map_to[], char buffer[],
  * @size: Value size
  * Return: Count of chars displayed.
  */
-int display_unsigned(va_list types, char buffer[],
+int print_unsigned(va_list types, char buffer[],
 	int flags, int width, int precision, int size)
 {
 	int i = BUFF_SIZE - 2;
@@ -92,7 +92,7 @@ int display_unsigned(va_list types, char buffer[],
  * @size: Value size
  * Return: Count of chars displayed.
  */
-int display_octal(va_list types, char buffer[],
+int print_octal(va_list types, char buffer[],
 	int flags, int width, int precision, int size)
 {
 	int i = BUFF_SIZE - 2;
@@ -133,7 +133,7 @@ int display_octal(va_list types, char buffer[],
  * @size: Value size
  * Return: Count of chars displayed.
  */
-int display_hex(va_list types, char buffer[],
+int print_hexadecimal(va_list types, char buffer[],
 	int flags, int width, int precision, int size)
 {
 	return (render_hex(types, "0123456789abcdef", buffer,
@@ -151,7 +151,7 @@ int display_hex(va_list types, char buffer[],
  * @size: Value size
  * Return: Count of chars displayed.
  */
-int display_hex_upper(va_list types, char buffer[],
+int print_hexa_upper(va_list types, char buffer[],
 	int flags, int width, int precision, int size)
 {
 	return (render_hex(types, "0123456789ABCDEF", buffer,
