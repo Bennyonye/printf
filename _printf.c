@@ -42,7 +42,7 @@ void print_buffer(char buffer[], int *buff_ind);
                     precision = get_precision(format, &i, list);
                     size = format_size(format, &i);
                    
-                    /* Move past the current character. */
+                    /* Move past the current character */
                     i++;
                     
                     printed = handle_print(format, &i, list, buffer, flags, width, precision, size);
