@@ -9,7 +9,7 @@
  */
 int format_size(const char *format, int *i)
 {
-    /* The character after the current one */
+    /* The character after the current one. */
     int next_char = *i + 1;
     int size = 0;
 
