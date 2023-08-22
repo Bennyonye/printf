@@ -50,10 +50,10 @@ int print_reverse(va_list, char[], int, int, int, int);
 int print_rot13string(va_list, char[], int, int, int, int);
 
 /* Specifiers Handling functions */
-int get_flags(const char *, int *);
-int get_width(const char *, int *, va_list);
+int flags_checker(const char *, int *);
+int width_parser(const char *, int *, va_list);
 int get_precision(const char *, int *, va_list);
-int get_size(const char *, int *);
+int format_size(const char *, int *);
 
 /* Width handler functions */
 int handle_write_char(char, char[], int, int, int, int);
