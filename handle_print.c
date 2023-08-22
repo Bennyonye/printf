@@ -2,7 +2,7 @@
 
 /* ============================ FUNCTION ============================ */
 /**
- * handle_print - Prints an argument based on its type
+ * handle_print - Prints an argument based on its type.
  * @fmt: Formatted string in which to print the arguments.
  * @list: List of arguments to be printed.
  * @ind: Pointer to the current index in the format string.
