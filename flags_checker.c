@@ -8,7 +8,7 @@
  */
 int flags_checker(const char *format, int *i)
 {
-    /* Mapping of flags to their corresponding bitwise values. */
+    /* Mapping of flags to their corresponding bitwise values */
     const char FLAGS_CH[] = {'-', '+', '0', '#', ' ', '\0'};
     const int FLAGS_ARR[] = {F_MINUS, F_PLUS, F_ZERO, F_HASH, F_SPACE, 0};
 
