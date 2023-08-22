@@ -1,7 +1,7 @@
 #include "main.h"
 
 /**
- * flag_checker - Calculates active flags from the format string.
+ * get_flags - Calculates active flags from the format string.
  * @format: Formatted string in which to check for flags.
  * @i: Pointer to the index where flag checking starts.
  * Return: Bitwise representation of the set flags.
