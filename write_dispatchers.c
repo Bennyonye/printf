@@ -1,6 +1,6 @@
 #include "main.h"
 
-/******************* CHARACTER HANDLING *******************/
+/*	 CHARACTER HANDLING 	*/
 /**
  * handle_write_char - Display a character.
  * @c: The character to display.
