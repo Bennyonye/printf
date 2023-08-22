@@ -149,12 +149,7 @@ int write_num(int ind, char buffer[],
  *
  * Return: Count of characters displayed.
  */
-
 int write_unsgnd(int is_negative, int ind,
-	char buffer[],
-	int flags, int width, int precision, int size)
-{
-   int write_unsgnd(int is_negative, int ind,
 	char buffer[],
 	int flags, int width, int precision, int size)
 {
@@ -189,7 +184,6 @@ int write_unsgnd(int is_negative, int ind,
  *
  * Return: Count of characters outputted.
  */
-
 int write_pointer(char buffer[], int ind, int length,
 	int width, int flags, char padd, char extra_c, int padd_start)
 {
