@@ -37,11 +37,11 @@ void print_buffer(char buffer[], int *buff_ind);
                 else
                 {
                     print_buffer(buffer, &buff_ind);
-                    flags = flags_checker(format, &i);
-                    width = width_parser(format, &i, list);
-                    precision = precision_parser(format, &i, list);
-                    size = format_size(format, &i);
-                    
+                    flags = get_flags(format, &i);
+                    width = get_width(format, &i, list);
+                    precision = get_precision(format, &i, list);
+                    size = get_size(format, &i);
+                   
                     /* Move past the current character. */
                     i++;
                     
