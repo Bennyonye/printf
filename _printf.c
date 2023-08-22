@@ -45,7 +45,7 @@ void print_buffer(char buffer[], int *buff_ind);
                     /* Move past the current character. */
                     i++;
                     
-                    printed = print_handler(format, &i, list, buffer, flags, width, precision, size);
+                    printed = handle_print(format, &i, list, buffer, flags, width, precision, size);
                     if (printed == -1)
                         return (-1);
                     printed_chars += printed;
