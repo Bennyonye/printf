@@ -7,50 +7,50 @@
 void print_buffer(char buffer[], int *buff_ind);
 
 /**
- * _printf - Custom printf function.
- * @format: The format string.
- * Return: Number of characters printed.
- */
+* _printf - Custom printf function.
+* @format: The format string.
+* Return: Number of characters printed.
+*/
+int _printf(const char *format, ...)
+{
+    int i, printed_chars = 0, buff_ind = 0, printed;
+    int flags, width, precision, size;
+    va_list list;
+    char buffer[BUFF_SIZE];
 
-        int _printf(const char *format, ...)
+    if (format == NULL)
+        return (-1);
+
+    va_start(list, format);
+
+    for (i = 0; format[i] != '\\0'; i++)
+    {
+        if (format[i] != '%')
         {
-            int i, printed_chars = 0, buff_ind = 0, printed;
-            int flags, width, precision, size;
-            va_list list;
-            char buffer[BUFF_SIZE];
-            
-            if (format == NULL)
+            buffer[buff_ind++] = format[i];
+            if (buff_ind == BUFF_SIZE)
+                print_buffer(buffer, &buff_ind);
+
+            printed_chars++;
+        }
+        else
+        {
+            print_buffer(buffer, &buff_ind);
+            flags = flags_checker(format, &i);
+            width = width_parser(format, &i, list);
+            precision = get_precision(format, &i, list);
+            size = format_size(format, &i);
+
+            /* Move past the current character */
+            i++;
+
+            printed =
+            handle_print(format, &i, list, buffer, flags, width, precision, size);
+            if (printed == -1)
                 return (-1);
-            
-            va_start(list, format);
-            
-            for (i = 0; format[i] != '\0'; i++)
-            {
-                if (format[i] != '%')
-                {
-                    buffer[buff_ind++] = format[i];
-                    if (buff_ind == BUFF_SIZE)
-                        print_buffer(buffer, &buff_ind);
-                    
-                    printed_chars++;
-                }
-                else
-                {
-                    print_buffer(buffer, &buff_ind);
-                    flags = flags_checker(format, &i);
-                    width = width_parser(format, &i, list);
-                    precision = get_precision(format, &i, list);
-                    size = format_size(format, &i);
-                   
-                    /* Move past the current character */
-                    i++;
-                    
-                    printed = handle_print(format, &i, list, buffer, flags, width, precision, size);
-                    if (printed == -1)
-                        return (-1);
-                    printed_chars += printed;
-                }
-            }
+            printed_chars += printed;
+        }
+    }
 
     print_buffer(buffer, &buff_ind);
 
@@ -60,10 +60,10 @@ void print_buffer(char buffer[], int *buff_ind);
 }
 
 /**
- * print_buffer - Print the contents of the buffer.
- * @buffer: Array of characters (the buffer).
- * @buff_ind: Current buffer index (also represents buffer length).
- */
+* print_buffer - Print the contents of the buffer.
+* @buffer: Array of characters (the buffer).
+* @buff_ind: Current buffer index (also represents buffer length).
+*/
 void print_buffer(char buffer[], int *buff_ind)
 {
     if (*buff_ind > 0)
