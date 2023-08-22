@@ -8,7 +8,7 @@ void print_buffer(char buffer[], int *buff_ind);
 
 /**
 * _printf - Custom printf function.
-* @format: The format string.
+* @format: The format string
 * Return: Number of characters printed.
 */
 int _printf(const char *format, ...)
