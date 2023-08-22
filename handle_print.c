@@ -31,7 +31,7 @@ int handle_print(const char *fmt, int *ind, va_list list, char buffer[],
 		}
 	}
 
-	// No format specifier was found
+	/* No format specifier was found */
 	if (fmt[*ind] == '\0')
 		return (-1);
 
